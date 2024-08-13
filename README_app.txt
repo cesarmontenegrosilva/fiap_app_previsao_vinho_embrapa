@@ -1,88 +1,102 @@
-# Flask API para Coleta de Dados de Uvas, Vinhos e Derivados do site da Embrapa: 
+# Previsão de Comercialização de Vinho Fino de Mesa (Tinto) com Prophet
 
-Este projeto é uma API RESTful desenvolvida em Flask que coleta dados de diferentes categorias de produção, processamento, comercialização, importação e exportação de uvas, vinhos e derivados a partir de um site específico. A API extrai informações de subcategorias existentes e retorna os dados no formato JSON.
+Este projeto é uma aplicação web desenvolvida com Flask que utiliza o modelo Prophet para prever a comercialização de Vinho Fino de Mesa (Tinto) no Brasil. Os dados são coletados diretamente de uma API, processados, e as previsões são geradas e exibidas em um gráfico, juntamente com métricas de desempenho do modelo.
 
 ## Funcionalidades
 
-- **Coleta de Dados**: A API acessa páginas específicas e extrai dados tabelados para diferentes anos, desde 1970 até 2023.
-- **Subcategorias**: O aplicativo identifica e coleta dados de todas as subcategorias disponíveis, como "Viníferas" e "Americanas e Híbridas".
-- **API RESTful**: Cada conjunto de dados de categoria pode ser acessado por meio de rotas dedicadas, retornando os dados em formato JSON.
+- Coleta de dados de diferentes categorias (produção, processamento, comercialização, importação, exportação) de uma API.
+- Preparação dos dados específicos de "Vinho Fino de Mesa (Tinto)" para modelagem.
+- Treinamento de um modelo Prophet para previsão da comercialização de vinhos.
+- Geração de previsões futuras com base nos períodos (anos) fornecidos pelo usuário.
+- Avaliação do desempenho do modelo usando MAE, RMSE, R² e MAPE.
+- Exibição das previsões e gráficos diretamente na interface web.
 
-## Estrutura de Diretórios
+## Estrutura do Projeto
 
-├── app.py
-├── requirements.txt
-└── README.md
-
-markdown
-Copiar código
-
-- `app.py`: O arquivo principal contendo o código da API.
-- `requirements.txt`: Arquivo listando as dependências do projeto.
-- `README.md`: Documentação do projeto.
-
-## Requisitos
-
-- Python 3.x
-- Flask
-- Requests
-- BeautifulSoup4
+- **`app.py`**: Arquivo principal que contém toda a lógica do backend, incluindo a coleta de dados, preparação, treinamento do modelo, previsão e renderização dos resultados.
+- **`requirements.txt`**: Lista de dependências do Python necessárias para rodar o projeto.
+- **`templates/previsao.html`**: Arquivo HTML que define a interface web para interação com o usuário.
 
 ## Instalação
 
-1. Clone este repositório para o seu ambiente local.
+Siga as instruções abaixo para configurar e rodar o projeto localmente:
+
+1. **Clone o repositório:**
 
    ```bash
    git clone https://github.com/seu-usuario/nome-do-repositorio.git
    cd nome-do-repositorio
-Crie um ambiente virtual e ative-o (opcional).
+Crie um ambiente virtual:
 
 bash
 Copiar código
 python -m venv venv
-source venv/bin/activate  # No Windows: venv\Scripts\activate
-Instale as dependências listadas no requirements.txt.
+Ative o ambiente virtual:
+
+No Windows:
+bash
+Copiar código
+venv\Scripts\activate
+No macOS/Linux:
+bash
+Copiar código
+source venv/bin/activate
+Instale as dependências:
 
 bash
 Copiar código
 pip install -r requirements.txt
-Uso
-Execute o aplicativo Flask.
+Execute a aplicação:
 
 bash
 Copiar código
 python app.py
-Acesse a API em http://127.0.0.1:5000/ com as seguintes rotas:
+Acesse a aplicação:
 
-/fiap/augusto/producao: Coleta dados da categoria "Produção".
-/fiap/augusto/processamento: Coleta dados da categoria "Processamento".
-/fiap/augusto/comercializacao: Coleta dados da categoria "Comercialização".
-/fiap/augusto/importacao: Coleta dados da categoria "Importação".
-/fiap/augusto/exportacao: Coleta dados da categoria "Exportação".
-Exemplos de Rotas
-Produção
-bash
+Abra o navegador e vá para http://127.0.0.1:5000/fiap/augusto/previsao.
+
+Uso
+Na página principal, insira o número de períodos (anos) que deseja prever no campo fornecido.
+Clique em "Gerar Previsão".
+Veja as métricas de desempenho do modelo, as previsões detalhadas e o gráfico gerado na própria página.
+Dependências
+Flask
+Prophet
+Requests
+BeautifulSoup4
+Pandas
+Matplotlib
+Scikit-learn
+NumPy
+Estrutura de Diretórios
+lua
 Copiar código
-GET /fiap/augusto/producao
-Retorna dados de produção para todos os anos disponíveis e subcategorias se existir.
+|-- app.py
+|-- requirements.txt
+|-- templates
+|   `-- previsao.html
+|-- venv (virtual environment)
+Contribuindo
+Se você deseja contribuir com melhorias ou correções, siga os passos:
 
-Processamento
-bash
-Copiar código
-GET /fiap/augusto/processamento
-Retorna dados de processamento para todos os anos disponíveis e subcategorias.
-
-Comercialização
-bash
-Copiar código
-GET /fiap/augusto/comercializacao
-Retorna dados de comercialização para todos os anos disponíveis e subcategorias.
-
-Notas
-Este aplicativo foi configurado para funcionar localmente, mas pode ser adaptado para ser implementado em servidores remotos.
-Certifique-se de que o site de onde os dados são coletados esteja acessível e que a estrutura HTML não tenha sido modificada.
-Contribuição
-Sinta-se à vontade para contribuir com melhorias e correções. Abra um pull request ou crie uma issue no repositório.
-
+Fork o repositório.
+Crie uma nova branch para a sua feature (git checkout -b minha-feature).
+Faça as modificações e commit (git commit -am 'Adicionar nova feature').
+Envie para a branch (git push origin minha-feature).
+Crie um novo Pull Request.
 Licença
-Este projeto é licenciado sob a Licença MIT. Consulte o arquivo LICENSE para obter mais informações.
+Este projeto está licenciado sob a MIT License - veja o arquivo LICENSE para mais detalhes.
+
+Autor
+Seu Nome
+
+bash
+Copiar código
+
+### Notas:
+- **`git clone https://github.com/seu-usuario/nome-do-repositorio.git`**: Substitua o link pelo link real do seu repositório.
+- **`Seu Nome`**: Substitua pelo seu nome ou usuário do GitHub.
+
+Esse README oferece uma visão geral completa do seu projeto e deve ser útil para qualquer pessoa que queira entender, instalar ou contribuir para o projeto.
+
+

@@ -6,4 +6,3 @@ flask
 prophet
 scikit-learn
 matplotlib
-base64

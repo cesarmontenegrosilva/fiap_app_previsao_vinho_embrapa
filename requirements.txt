@@ -1,4 +1,10 @@
+numpy==1.26.0b1
 requests
+pandas
 bs4
 flask
-gunicorn
+prophet
+scikilearn
+matplotlib
+io
+base64
